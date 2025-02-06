@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car Listings</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #000;
+            color: #fff;
+        }
+
+        header {
+            text-align: center;
+            padding: 20px;
+            background-color: #222;
+        }
+
+        header h1 {
+            color: #ffcc00;
+        }
+
+        .listing {
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #111;
+            border-radius: 10px;
+            max-width: 800px;
+        }
+
+        .listing h2 {
+            color: #ffcc00;
+        }
+
+        .listing img {
+            width: 100%;
+            max-height: 400px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 15px;
+        }
+
+        .buttons {
+            text-align: center;
+        }
+
+        .buttons button {
+            margin: 5px;
+            padding: 10px 15px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            background-color: #ffcc00;
+            color: #000;
+            transition: background-color 0.3s;
+        }
+
+        .buttons button:hover {
+            background-color: #e6b800;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #222;
+            color: #888;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Car Listings</h1>
+    </header>
+
+    <!-- Toyota Supra Listing -->
+    <div class="listing">
+        <h2>Toyota Supra</h2>
+        <p>A high-performance sports car that delivers an exhilarating driving experience. Model year: 2020, Price: $50,000, Condition: Excellent.</p>
+        <img id="supraImage" src="supra1.jpg" alt="Toyota Supra">
+        <div class="buttons">
+            <button onclick="previousImage('supra')">Previous</button>
+            <button onclick="nextImage('supra')">Next</button>
+        </div>
+    </div>
+
+    <!-- Mercedes-Benz S-Class Listing -->
+    <div class="listing">
+        <h2>Mercedes-Benz S-Class</h2>
+        <p>The ultimate luxury sedan with premium features and top-notch comfort. Model year: 2022, Price: $100,000, Condition: Brand New.</p>
+        <img id="mercedesImage" src="mercedes1.jpg" alt="Mercedes-Benz S-Class">
+        <div class="buttons">
+            <button onclick="previousImage('mercedes')">Previous</button>
+            <button onclick="nextImage('mercedes')">Next</button>
+        </div>
+    </div>
+
+    <!-- Ford Mustang GT Listing -->
+    <div class="listing">
+        <h2>Ford Mustang GT</h2>
+        <p>An iconic American muscle car with exceptional performance and stunning looks. Model year: 2021, Price: $60,000, Condition: Excellent.</p>
+        <img id="mustangImage" src="mustang1.jpg" alt="Ford Mustang GT">
+        <div class="buttons">
+            <button onclick="previousImage('mustang')">Previous</button>
+            <button onclick="nextImage('mustang')">Next</button>
+        </div>
+    </div>
+
+    <!-- BMW X5 Listing -->
+    <div class="listing">
+        <h2>BMW X5</h2>
+        <p>A luxury SUV that combines comfort, performance, and style. Model year: 2021, Price: $80,000, Condition: Like New.</p>
+        <img id="bmwImage" src="bmw1.jpg" alt="BMW X5">
+        <div class="buttons">
+            <button onclick="previousImage('bmw')">Previous</button>
+            <button onclick="nextImage('bmw')">Next</button>
+        </div>
+    </div>
+
+    <!-- Audi R8 Listing -->
+    <div class="listing">
+        <h2>Audi R8</h2>
+        <p>A sleek and powerful supercar with a roaring V10 engine. Model year: 2020, Price: $150,000, Condition: Mint.</p>
+        <img id="audiImage" src="audi1.jpg" alt="Audi R8">
+        <div class="buttons">
+            <button onclick="previousImage('audi')">Previous</button>
+            <button onclick="nextImage('audi')">Next</button>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Jayden Jordan Cars. All Rights Reserved. <a href="index.html" style="color: #ffcc00;">Back to Home</a></p>
+    </footer>
+
+    <script>
+        var images = {
+            supra: ["supra1.jpg", "supra2.jpg", "supra3.jpg"],
+            mercedes: ["mercedes1.jpg", "mercedes2.jpg", "mercedes3.jpg"],
+            mustang: ["mustang1.jpg", "mustang2.jpg", "mustang3.jpg"],
+            bmw: ["bmw1.jpg", "bmw2.jpg", "bmw3.jpg"],
+            audi: ["audi1.jpg", "audi2.jpg", "audi3.jpg"]
+        };
+
+        var currentImageIndex = {
+            supra: 0,
+            mercedes: 0,
+            mustang: 0,
+            bmw: 0,
+            audi: 0
+        };
+
+        function previousImage(car) {
+            currentImageIndex[car] = (currentImageIndex[car] - 1 + images[car].length) % images[car].length;
+            document.getElementById(car + 'Image').src = images[car][currentImageIndex[car]];
+        }
+
+        function nextImage(car) {
+            currentImageIndex[car] = (currentImageIndex[car] + 1) % images[car].length;
+            document.getElementById(car + 'Image').src = images[car][currentImageIndex[car]];
+        }
+    </script>
+</body>
+</html>
